@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+  <Commands package="guidCppReflectionPackage">
+    
+    <Groups>
+      <Group guid="guidCppReflectionPackageCmdSet" id="CppReflectionMenuGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
+      </Group>
+    </Groups>
+    
+    <Buttons>
+      <Button guid="guidCppReflectionPackageCmdSet" id="CppReflectionWindowCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidCppReflectionPackageCmdSet" id="CppReflectionMenuGroup"/>
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>CppReflection</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+    
+    <Bitmaps>
+      <Bitmap guid="guidImages" href="Resources/CppReflectionWindowCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough"/>
+    </Bitmaps>
+
+  </Commands>
+
+  <!--
+    KeyBinding.editor
+    https://stackoverflow.com/questions/41020301/c-sharp-vsix-editor-attribute-of-keybindings-element
+  -->
+  <KeyBindings>
+    <KeyBinding guid="guidCppReflectionPackageCmdSet" 
+                id="CppReflectionWindowCommandId" 
+                editor="guidSourceCodeTextEditor" 
+                key1="I" mod1="Control" 
+                key2="I" mod2="Control" 
+                />
+  </KeyBindings>
+
+  <Symbols>
+    <GuidSymbol name="guidCppReflectionPackage" value="{713bcb90-e72c-4242-a5ca-626da5d08f8b}" />
+    <GuidSymbol name="guidCppReflectionPackageCmdSet" value="{20e86c39-0bd8-46e6-8151-1d18aa9dff79}">
+      <IDSymbol name="CppReflectionMenuGroup" value="0x1020" />
+      <IDSymbol name="CppReflectionWindowCommandId" value="0x0100" />
+    </GuidSymbol>
+    <GuidSymbol name="guidImages" value="{7ffd72cb-00e8-41c7-87f7-5e606e7db64d}" >
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+
+    <GuidSymbol name ="guidSourceCodeTextEditor" value="{8b382828-6202-11d1-8870-0000f87579d2}" />
+  </Symbols>
+</CommandTable>
