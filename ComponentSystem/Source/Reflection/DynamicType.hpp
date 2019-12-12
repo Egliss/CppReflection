@@ -52,10 +52,15 @@ namespace Egliss::Reflection
 			auto index = _typesindices.at(typeName);
 			return IndexOf(index);
 		}
+		static const DynamicTypeDescription* FindByTypeName(const std::string& typeName)
+		{
+			const auto index = _typesindices.find(typeName);
+			if(index == _typesindices.end())
+				return nullptr;
+			return &_indexedTypes[index->second];
+		}
 	private:
 		static std::vector<DynamicTypeDescription> _indexedTypes;
 		static std::unordered_map<std::string, int> _typesindices;
 	};
-
-	using Dynamic = DynamicTypeDescription;
 }
