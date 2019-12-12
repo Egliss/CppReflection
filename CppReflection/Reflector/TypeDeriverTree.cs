@@ -9,10 +9,10 @@ namespace CppReflection.Reflector
 {
     public static class TypeDeriverTree
     {
-        public static TypeDeriverTreeNode MakeTree(IEnumerable<ClassNode> nodes, ClassNode parent)
+        public static TypeTreeNode MakeTree(IEnumerable<ClassNode> nodes, ClassNode parent)
         {
-            TypeDeriverTreeNode parentNode = new TypeDeriverTreeNode();
-            parentNode.Own = parent;
+            TypeTreeNode parentNode = new TypeTreeNode();
+            parentNode.Node = parent;
             foreach (var item in nodes)
             {
                 if (item.ParentClasses.Any(m => m == parent.Name))
@@ -21,9 +21,9 @@ namespace CppReflection.Reflector
             return parentNode;
         }
     }
-    public class TypeDeriverTreeNode
+    public class TypeTreeNode
     {
-        public ClassNode Own { get; set; }
-        public List<TypeDeriverTreeNode> Childs { get; } = new List<TypeDeriverTreeNode>();
+        public ClassNode Node { get; set; }
+        public List<TypeTreeNode> Childs { get; } = new List<TypeTreeNode>();
     }
 }
