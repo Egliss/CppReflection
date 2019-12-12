@@ -20,13 +20,14 @@ namespace Egliss::ComponentSystem
 
 	inline Component* GameObject::AddComponentByName(const std::string& typeName)
 	{
-		const auto& description = Reflection::DynamicTypeManager::TypeNameOf(typeName);
-		if (description.isAbstract) {
+		const auto description = Reflection::DynamicTypeManager::FindByTypeName(typeName);
+		if(description == nullptr)
+			return nullptr;
+		if (description->isAbstract) {
 			return nullptr;
 		}
-		const auto component = static_cast<Component*>(description.constructor());
-		// GameObject‚Ö‚ÌŠÖ˜A•t‚¯
-		this->_InternalAddComponent(component, description.id);
+		const auto component = static_cast<Component*>(description->constructor());
+		this->_InternalAddComponent(component, description->id);
 		return component;
 	}
 
