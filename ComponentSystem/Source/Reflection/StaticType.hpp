@@ -7,10 +7,8 @@ namespace Egliss::Reflection
 	{
 		// 型固有のId
 		// static constexpr int Id = 0;
-		// インスタンス化可能か
-		// static constexpr bool IsAbstract = true;
-		// Rootまで辿る際に使用する型Id一覧
-		// static constexpr auto ParentTypeIds = std::array<int, 1> { -1 };
+		// クラスの名称
+		// static constexpr std::string_view Name = "NameSpace::ClassName";
 	};
 
 	template<class T>

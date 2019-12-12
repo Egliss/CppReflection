@@ -11,8 +11,9 @@ namespace Egliss::ComponentSystem
 	template<class T>
 	inline T* GameObject::AddComponent()
 	{
-		const auto typeId = Reflection::Static<T>::Id;
+		const auto typeId = Reflection::StaticTypeDescription<T>::Id;
 		const auto component = new T();
+		// GameObjectへの関連付け
 		this->_InternalAddComponent(component, typeId);
 		return component->As<T>();
 	}
@@ -23,7 +24,8 @@ namespace Egliss::ComponentSystem
 		if (description.isAbstract) {
 			return nullptr;
 		}
-		const auto component = reinterpret_cast<Component*>(description.constructor());
+		const auto component = static_cast<Component*>(description.constructor());
+		// GameObjectへの関連付け
 		this->_InternalAddComponent(component, description.id);
 		return component;
 	}
@@ -36,10 +38,15 @@ namespace Egliss::ComponentSystem
 	template<class T, class U>
 	static inline T* _InternalGetComponentFrom(const U& container)
 	{
+		// 検索する型のIDを拾う
 		const int inputTypeId = Reflection::StaticTypeDescription<T>::Id;
+		// コンテナに存在するコンポーネントを列挙
 		for (const auto component : container)
 		{
-			const auto& description = Reflection::DynamicTypeManager::IndexOf(component->TypeId());
+			const auto typeID = component->TypeId();
+			// 型情報を取得
+			const auto& description = Reflection::DynamicTypeManager::IndexOf(typeID);
+			// 基底クラスまでの型ID一覧を辿って対象のIDが存在するか
 			if (description.HasTypeRelation(inputTypeId))
 			{
 				return component->As<T>();

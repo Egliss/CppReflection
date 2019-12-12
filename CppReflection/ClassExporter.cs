@@ -33,10 +33,10 @@ namespace CppReflection
                 string chainStr = $"std::vector<int>({{{string.Join(" ,", item.ParentChain.Select(m => m.ToString()))}}})";
                 string isAbstract = (!item.IsNotAbstract).ToString().ToLower();
                 string constructor = item.IsNotAbstract
-                    ? "[](){return new " + item.Name + "();}"
+                    ? "[](){return new " + item.FullName + "();}"
                     : "[](){return nullptr;}";
 
-                builder.AppendLine($"	_indexedTypes.emplace_back({item.Id.ToString()}, \"{item.Name}\", {isAbstract},{chainStr},{constructor});");
+                builder.AppendLine($"	_indexedTypes.emplace_back({item.Id.ToString()}, \"{item.FullName}\", {isAbstract},{chainStr},{constructor});");
                 builder.AppendLine($"	_typesindices.insert(std::make_pair(\"{item.FullName}\"s,{item.Id}));");
             }
             builder.AppendLine("}");
@@ -73,9 +73,7 @@ namespace CppReflection
                 builder.AppendLine(indent + "{");
                 builder.AppendLine(indent + "public:");
                 builder.AppendLine(indent + "    static constexpr int Id = " + node.Id.ToString() + ";");
-                builder.AppendLine(indent + "    static constexpr bool IsAbstract = " + isAbstract + ";");
-                builder.AppendLine(indent + "    static constexpr std::string_view Name = \"" + node.Name + "\";");
-                builder.AppendLine(indent + "    static constexpr std::array<int," + chainCount + "> ParentTypeIds = std::array<int," + chainCount + "> { " + chainStr + "};");
+                builder.AppendLine(indent + "    static constexpr std::string_view Name = \"" + node.FullName + "\";");
                 builder.AppendLine(indent + "};");
             }
             builder.AppendLine("    ");
