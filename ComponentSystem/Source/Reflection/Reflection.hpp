@@ -8,6 +8,6 @@
 #include <functional>
 
 #include "./ReflectionAnchor.hpp"
-#include "./DynamicType.hpp"
 #include "./StaticType.hpp"
 #include "./StaticType.inl"
+#include "./DynamicType.hpp"
