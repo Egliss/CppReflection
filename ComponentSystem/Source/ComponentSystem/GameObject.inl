@@ -23,9 +23,9 @@ namespace Egliss::ComponentSystem
 		const auto description = Reflection::DynamicTypeManager::FindByTypeName(typeName);
 		if(description == nullptr)
 			return nullptr;
-		if (description->isAbstract) {
+		if (description->isAbstract)
 			return nullptr;
-		}
+		
 		const auto component = static_cast<Component*>(description->constructor());
 		this->_InternalAddComponent(component, description->Id());
 		return component;
@@ -34,7 +34,7 @@ namespace Egliss::ComponentSystem
 	template<class T>
 	inline T* GameObject::AddComponentByNameAs(const std::string& typeName)
 	{
-		return static_cast<T*>(this->AddComponentByName(typeName));
+		return this->AddComponentByName(typeName)->As<T>();
 	}
 	template<class T, class U>
 	static inline T* _InternalGetComponentFrom(const U& container)
@@ -49,9 +49,7 @@ namespace Egliss::ComponentSystem
 			const auto& description = Reflection::DynamicTypeManager::IndexOf(typeID);
 			// Šî’êƒNƒ‰ƒX‚Ü‚Å‚ÌŒ^IDˆê——‚ð’H‚Á‚Ä‘ÎÛ‚ÌID‚ª‘¶Ý‚·‚é‚©
 			if (description.HasTypeRelation(inputTypeId))
-			{
 				return component->As<T>();
-			}
 		}
 		return nullptr;
 	}

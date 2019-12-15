@@ -13,7 +13,7 @@ namespace Egliss::ComponentSystem
 	};
 
 	class GameObject;
-	class Component : public Egliss::Reflection::IRfelectionTarget
+	class Component abstract : public Egliss::Reflection::IRfelectionTarget
 	{
 		using GameObjectT = GameObject;
 	public:

@@ -162,6 +162,7 @@
     <ClInclude Include="Source\ComponentSystem\Component.hpp" />
     <ClInclude Include="Source\ComponentSystem\ComponentSystem.hpp" />
     <ClInclude Include="Source\Extensions\CrtNew.hpp" />
+    <ClInclude Include="Source\Other\UniqueTypeId.h" />
     <ClInclude Include="Source\SceneManagement\GameObjectManager.hpp" />
     <ClInclude Include="Source\SceneManagement\HierarchyTreeOptions.hpp" />
     <ClInclude Include="Source\ComponentSystem\RectTransform.hpp" />
@@ -186,6 +187,7 @@
   <ItemGroup>
     <ClCompile Include="Source\ComponentSystem\Component.cpp" />
     <ClCompile Include="Source\ComponentSystem\GameObject.cpp" />
+    <ClCompile Include="Source\Other\UniqueTypeId.cpp" />
     <ClCompile Include="Source\SceneManagement\GameObjectManager.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\Reflection\DynamicType.cpp" />

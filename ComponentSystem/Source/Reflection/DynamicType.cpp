@@ -11,7 +11,7 @@ std::unordered_map<std::string, int> DynamicTypeManager::_typesindices;
 
 void Egliss::Reflection::DynamicTypeManager::Initialize()
 {
-	_indexedTypes.emplace_back("Egliss::ComponentSystem::Component", false,std::vector<int>({0}),[](){return new Egliss::ComponentSystem::Component();});
+	_indexedTypes.emplace_back("Egliss::ComponentSystem::Component", true,std::vector<int>({0}),[](){return nullptr;});
 	_typesindices.insert(std::make_pair("Egliss::ComponentSystem::Component"s,0));
 	_indexedTypes.emplace_back("Egliss::ComponentSystem::Transform", false,std::vector<int>({1 ,0}),[](){return new Egliss::ComponentSystem::Transform();});
 	_typesindices.insert(std::make_pair("Egliss::ComponentSystem::Transform"s,1));
