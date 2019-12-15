@@ -46,7 +46,7 @@ namespace Egliss.CppReflection
 
     /// <summary>
     /// <see cref="IScope"/>の実装<para/>
-    /// スコープか可能なオブジェクトはこのクラスから派生する
+    /// スコープ化可能なオブジェクトはこのクラスから派生する
     /// </summary>
     public class Scope : IScope
     {
@@ -265,64 +265,57 @@ namespace Egliss.CppReflection
         {
             if (element == null)
                 return;
+            var name = element.FullName;
 
             IScope scope = parent;
             switch (element.Kind)
             {
-                case vsCMElement.vsCMElementIncludeStmt:
-                    break;
                 case vsCMElement.vsCMElementClass:
-                    var ui = element as VCCodeClass;
-                    scope = parent.FindScope(ui.Name);
+                {
+                    var item = element as VCCodeClass;
+                    scope = parent.FindScope(item.Name);
 
-                    //new namespace 
-                    if (scope == null)
+                    if (scope != null)
+                        break;
+
+                    var classNode = new ClassNode();
+                    classNode.Name = item.Name;
+                    classNode.VCElement = element;
+                    foreach (VCCodeElement baseClass in item.Bases)
                     {
-                        var classNode = new ClassNode();
-                        classNode.Name = ui.Name;
-                        classNode.VCElement = element;
-                        foreach (VCCodeElement e in ui.Bases)
-                        {
-                            classNode.ParentClasses.Add(e.Name);
-                        }
-                        scope = classNode;
-                        parent.AddElement(scope);
+                        classNode.ParentClasses.Add(baseClass.Name);
                     }
+                    scope = classNode;
+                    parent.AddElement(scope);
                     break;
-                case vsCMElement.vsCMElementVariable:
-                    var ux = element as VCCodeVariable;
-                    var elem = ((Scope)parent).FindElement<ValueNode>(ux.Name) as ValueNode;
-                    if (elem == null)
-                    {
-                        elem = new ValueNode();
-                        elem.VCElement = element;
-                        elem.Name = ux.Name;
-                        parent.AddElement(elem);
-                    }
-                    break;
-                case vsCMElement.vsCMElementUsingStmt:
-                    break;
-                case vsCMElement.vsCMElementStruct:
-                    break;
-                case vsCMElement.vsCMElementFunction:
-                    break;
+                }
                 case vsCMElement.vsCMElementNamespace:
-                    var next = element as VCCodeNamespace;
-                    scope = parent.FindScope(next.Name);
+                {
+                    var item = element as VCCodeNamespace;
+                    scope = parent.FindScope(item.Name);
 
-                    //new namespace 
-                    if (scope == null)
-                    {
-                        scope = new NamespaceNode();
-                        ((NamespaceNode)scope).VCElement = element;
-                        scope.Name = next.Name;
-                        parent.AddElement(scope);
-                    }
+                    if (scope != null)
+                        break;
+
+                    scope = new NamespaceNode();
+                    ((NamespaceNode)scope).VCElement = element;
+                    scope.Name = item.Name;
+                    parent.AddElement(scope);
                     break;
+                }
+                case vsCMElement.vsCMElementEnum:
+                case vsCMElement.vsCMElementFunction:
+                case vsCMElement.vsCMElementParameter:
+                case vsCMElement.vsCMElementVariable:
+                    return;
+
                 default:
                     break;
             }
 
+            var ex = element.Children.OfType<VCCodeClass>()
+                .Select(m => m.FullName)
+                .ToList();
             foreach (VCCodeElement item in element.Children)
             {
                 AssigneElement(baseDirectory, item, scope);

@@ -5,25 +5,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CppReflection.Reflector
+public static class TypeDeriverTree
 {
-    public static class TypeDeriverTree
+    public static TypeTreeNode MakeTree(IEnumerable<ClassNode> nodes, ClassNode parent)
     {
-        public static TypeTreeNode MakeTree(IEnumerable<ClassNode> nodes, ClassNode parent)
+        TypeTreeNode parentNode = new TypeTreeNode();
+        parentNode.Node = parent;
+        foreach (var item in nodes)
         {
-            TypeTreeNode parentNode = new TypeTreeNode();
-            parentNode.Node = parent;
-            foreach (var item in nodes)
-            {
-                if (item.ParentClasses.Any(m => m == parent.Name))
-                    parentNode.Childs.Add(MakeTree(nodes, item));
-            }
-            return parentNode;
+            if (item.ParentClasses.Any(m => m == parent.Name))
+                parentNode.Childs.Add(MakeTree(nodes, item));
         }
+        return parentNode;
     }
-    public class TypeTreeNode
-    {
-        public ClassNode Node { get; set; }
-        public List<TypeTreeNode> Childs { get; } = new List<TypeTreeNode>();
-    }
+}
+public class TypeTreeNode
+{
+    public ClassNode Node { get; set; }
+    public List<TypeTreeNode> Childs { get; } = new List<TypeTreeNode>();
 }

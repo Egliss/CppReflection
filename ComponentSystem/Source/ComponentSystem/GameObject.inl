@@ -27,7 +27,7 @@ namespace Egliss::ComponentSystem
 			return nullptr;
 		}
 		const auto component = static_cast<Component*>(description->constructor());
-		this->_InternalAddComponent(component, description->id);
+		this->_InternalAddComponent(component, description->Id());
 		return component;
 	}
 

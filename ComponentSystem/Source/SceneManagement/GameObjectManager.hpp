@@ -12,8 +12,6 @@ namespace Egliss::SceneManagement
 	// TODO ComponentSystem‚É’u‚«‚½‚¢
 	class GameObjectManager
 	{
-	// TODO Žl•ª–Ø‚É’u‚«Š·‚¦‚½‚¢
-	// using ContainerT = std::unique_ptr<QuadTree<std::vector<GameObject*>>>;
 	using ContainerT = std::vector<ComponentSystem::GameObject*>;
 	public:
 		static void Initialize();
@@ -22,8 +20,8 @@ namespace Egliss::SceneManagement
 		static void Update();
 
 		static ComponentSystem::GameObject* Create(const std::string& name = "GameObject");
-		static ComponentSystem::GameObject* Find(const std::string& GameObjectName);
-		static ComponentSystem::GameObject* Find(const std::function<bool(const ComponentSystem::GameObject*)>& functor);
+		static ComponentSystem::GameObject* Find(const std::string& gameObjectName);
+		static ComponentSystem::GameObject* Find(const std::function<bool(const ComponentSystem::GameObject*)>& isSame);
 
 	private:
 		static ContainerT _entities;

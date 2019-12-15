@@ -11,7 +11,6 @@ int GameObjectManager::_primaryId;
 void GameObjectManager::Initialize()
 {
 	GameObjectManager::_primaryId = 0;
-	// GameObjectManager::_entities = std::make_unique<QuadTree<std::vector<GameObject*>>>(4);
 }
 
 void GameObjectManager::Finalize()
@@ -21,7 +20,6 @@ void GameObjectManager::Finalize()
 		delete GameObject;
 	}
 	GameObjectManager::_entities.clear();
-	// GameObjectManager::_entities =nullptr;
 }
 
 GameObject* GameObjectManager::Create(const std::string& name)

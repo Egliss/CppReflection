@@ -175,10 +175,8 @@
     <ClInclude Include="Source\Reflection\Reflection.hpp" />
     <ClInclude Include="Source\Reflection\ReflectionAnchor.hpp" />
     <ClInclude Include="Source\Reflection\StaticType.hpp" />
-    <ClInclude Include="Source\SceneManagement\QuadTreeAgent.hpp" />
     <ClInclude Include="Source\SceneManagement\Scene.hpp" />
     <ClInclude Include="Source\SceneManagement\SceneManagement.hpp" />
-    <ClInclude Include="Source\SceneManagement\QuadTree.hpp" />
     <ClInclude Include="Source\SceneManagement\SceneManager.hpp" />
   </ItemGroup>
   <ItemGroup>

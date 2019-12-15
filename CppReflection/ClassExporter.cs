@@ -18,8 +18,6 @@ namespace CppReflection
             builder.AppendLine("#include \"../Game/Game.hpp\"");
             builder.AppendLine("");
             builder.AppendLine("using namespace Egliss::Reflection;");
-            builder.AppendLine("using namespace Egliss::Game;");
-            builder.AppendLine("using namespace Egliss::ComponentSystem;");
             builder.AppendLine("using namespace std::string_literals;");
             builder.AppendLine("");
             builder.AppendLine("std::vector<DynamicTypeDescription> DynamicTypeManager::_indexedTypes;");
@@ -36,7 +34,7 @@ namespace CppReflection
                     ? "[](){return new " + item.FullName + "();}"
                     : "[](){return nullptr;}";
 
-                builder.AppendLine($"	_indexedTypes.emplace_back({item.Id.ToString()}, \"{item.FullName}\", {isAbstract},{chainStr},{constructor});");
+                builder.AppendLine($"	_indexedTypes.emplace_back(\"{item.FullName}\", {isAbstract},{chainStr},{constructor});");
                 builder.AppendLine($"	_typesindices.insert(std::make_pair(\"{item.FullName}\"s,{item.Id}));");
             }
             builder.AppendLine("}");

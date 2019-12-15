@@ -8,8 +8,6 @@
 
 #include "../Reflection/ReflectionAnchor.hpp"
 #include "../ComponentSystem/Component.hpp"
-#include "./QuadTree.hpp"
-#include "./QuadTreeAgent.hpp"
 #include "./Scene.hpp"
 #include "./SceneManager.hpp"
 #include "./GameObjectManager.hpp"

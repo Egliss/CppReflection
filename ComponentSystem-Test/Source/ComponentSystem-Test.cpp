@@ -102,17 +102,17 @@ namespace Reflection
 		{
 			std::array<Component*, 6> types;
 			types[0] = new Component();
-			types[0]->TypeId(Egliss::Reflection::Static<Component>::Id);
+			types[0]->TypeId(Egliss::Reflection::StaticTypeDescription<Component>::Id);
 			types[1] = new Component();
-			types[1]->TypeId(Egliss::Reflection::Static<Component>::Id);
+			types[1]->TypeId(Egliss::Reflection::StaticTypeDescription<Component>::Id);
 			types[2] = new Component();
-			types[2]->TypeId(Egliss::Reflection::Static<Component>::Id);
+			types[2]->TypeId(Egliss::Reflection::StaticTypeDescription<Component>::Id);
 			types[3] = new Game::Dummy();
-			types[3]->TypeId(Egliss::Reflection::Static<Game::Dummy>::Id);
+			types[3]->TypeId(Egliss::Reflection::StaticTypeDescription<Game::Dummy>::Id);
 			types[4] = new Component();
-			types[4]->TypeId(Egliss::Reflection::Static<Component>::Id);
+			types[4]->TypeId(Egliss::Reflection::StaticTypeDescription<Component>::Id);
 			types[5] = new Component();
-			types[5]->TypeId(Egliss::Reflection::Static<Component>::Id);
+			types[5]->TypeId(Egliss::Reflection::StaticTypeDescription<Component>::Id);
 
 			Dummies.reserve(1000);
 			Dummies.resize(1000);
@@ -124,7 +124,7 @@ namespace Reflection
 		}
 		EGL_TEST_MRTHOD_BENCHMARK(_10000x1000, L"ReleaseOnly")
 		{
-			const auto inputId = Egliss::Reflection::Static<Egliss::Game::Dummy>::Id;
+			const auto inputId = Egliss::Reflection::StaticTypeDescription<Egliss::Game::Dummy>::Id;
 			// TODO Debug時に1000倍程度遅くなるので計測しない
 			// 主にこの辺が原因（std::コンテナ全てにオーバーヘッドが発生）
 			// https://docs.microsoft.com/ja-jp/cpp/standard-library/iterator-debug-level?view=vs-2019
@@ -176,43 +176,6 @@ namespace Reflection
 		}
 	};
 
-	TEST_CLASS(QuadTree)
-	{
-	public:
-		EGL_TEST_MRTHOD_NOT_IMPLEMENT(Container)
-		{
-			//auto container = QuadTree<int>(0);
-			//auto container2 = QuadTree<int>(1);
-			//auto container3 = QuadTree<int>(2);
-			//auto container4 = QuadTree<int>(3);
-			//auto container5 = QuadTree<int>(11);
-			//auto container6 = QuadTree<int>(12);
-			//Assert::AreEqual((int)container.MortonLinearTree().size(), 1);
-			//Assert::AreEqual((int)container2.MortonLinearTree().size(), 5);
-			//Assert::AreEqual((int)container3.MortonLinearTree().size(), 21);
-			//Assert::AreEqual((int)container3.GetByIndex(2).Hierarchy, 1);
-			//Assert::AreEqual((int)container3.GetByIndex(2).MortonOrder, 1);
-			//Assert::AreEqual((int)container3.GetByIndex(2).ToLinearIndex(), 2);
-			//Assert::AreEqual((int)container3.GetByMortonOrder(2, 2).Hierarchy, 2);
-			//Assert::AreEqual((int)container3.GetByMortonOrder(2, 2).MortonOrder, 2);
-			//Assert::AreEqual((int)container3.GetByMortonOrder(2, 2).ToLinearIndex(), 7);
-			//Assert::AreEqual((int)container4.MortonLinearTree().size(), 85);
-			//Assert::AreEqual((int)container5.MortonLinearTree().size(), 5592405);
-			//Assert::AreEqual((int)container6.MortonLinearTree().size(), 0);
-		}
-		EGL_TEST_MRTHOD_NOT_IMPLEMENT(Element)
-		{
-			//auto element = QuadTreeElement<int>(0, 0);
-			//auto element2 = QuadTreeElement<int>(3, 1);
-			//auto element3 = QuadTreeElement<int>(6, 2);
-			//auto element4 = QuadTreeElement<int>(32, 4);
-			//
-			//Assert::AreEqual(element.ToLinearIndex(), 0);
-			//Assert::AreEqual(element2.ToLinearIndex(), 4);
-			//Assert::AreEqual(element3.ToLinearIndex(), 11);
-			//Assert::AreEqual(element4.ToLinearIndex(), 117);
-		}
-	};
 }
 
 
