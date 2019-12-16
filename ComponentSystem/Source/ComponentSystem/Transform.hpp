@@ -39,13 +39,13 @@ namespace Egliss::ComponentSystem
 		}
 		void Parent(Transform* parent)
 		{
-			// TODO Šù‘¶‚Ìeƒ`ƒFƒbƒN
+			// TODO æ—¢å­˜ã®è¦ªãƒã‚§ãƒƒã‚¯
 			this->_parent = parent;
 		}
 		void AddChild(Transform* child)
 		{
-			// TODO Šù‘¶‚Ìeƒ`ƒFƒbƒN
-			// TODO Žqd•¡ƒ`ƒFƒbƒN
+			// TODO æ—¢å­˜ã®è¦ªãƒã‚§ãƒƒã‚¯
+			// TODO å­é‡è¤‡ãƒã‚§ãƒƒã‚¯
 			this->_children.emplace_back(child);
 		}
 

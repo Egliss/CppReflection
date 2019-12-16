@@ -13,7 +13,7 @@ namespace Egliss::ComponentSystem
 	{
 		const auto typeId = Reflection::StaticTypeDescription<T>::Id;
 		const auto component = new T();
-		// GameObject‚Ö‚ÌŠÖ˜A•t‚¯
+		// GameObjectã¸ã®é–¢é€£ä»˜ã‘
 		this->_InternalAddComponent(component, typeId);
 		return component->As<T>();
 	}
@@ -39,15 +39,15 @@ namespace Egliss::ComponentSystem
 	template<class T, class U>
 	static inline T* _InternalGetComponentFrom(const U& container)
 	{
-		// ŒŸõ‚·‚éŒ^‚ÌID‚ğE‚¤
+		// æ¤œç´¢ã™ã‚‹å‹ã®IDã‚’æ‹¾ã†
 		const int inputTypeId = Reflection::StaticTypeDescription<T>::Id;
-		// ƒRƒ“ƒeƒi‚É‘¶İ‚·‚éƒRƒ“ƒ|[ƒlƒ“ƒg‚ğ—ñ‹“
+		// ã‚³ãƒ³ãƒ†ãƒŠã«å­˜åœ¨ã™ã‚‹ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’åˆ—æŒ™
 		for (const auto component : container)
 		{
 			const auto typeID = component->TypeId();
-			// Œ^î•ñ‚ğæ“¾
+			// å‹æƒ…å ±ã‚’å–å¾—
 			const auto& description = Reflection::DynamicTypeManager::IndexOf(typeID);
-			// Šî’êƒNƒ‰ƒX‚Ü‚Å‚ÌŒ^IDˆê——‚ğ’H‚Á‚Ä‘ÎÛ‚ÌID‚ª‘¶İ‚·‚é‚©
+			// åŸºåº•ã‚¯ãƒ©ã‚¹ã¾ã§ã®å‹IDä¸€è¦§ã‚’è¾¿ã£ã¦å¯¾è±¡ã®IDãŒå­˜åœ¨ã™ã‚‹ã‹
 			if (description.HasTypeRelation(inputTypeId))
 				return component->As<T>();
 		}

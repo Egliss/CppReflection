@@ -1,4 +1,4 @@
-﻿using CppReflection.Reflector;
+using CppReflection.Reflector;
 using System;
 using System.Collections.Generic;
 using System.IO;

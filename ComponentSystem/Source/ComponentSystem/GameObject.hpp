@@ -46,7 +46,7 @@ namespace Egliss::ComponentSystem
 			this->_enable = false;
 		}
 
-		// TODO ‚Ç‚¤‚É‚©‚µ‚½‚¢
+		// TODO ã©ã†ã«ã‹ã—ãŸã„
 		void _InternalAddComponent(Component* component, int typeId);
 		void _InternalId(int id) { this->_id = id; }
 		void _InternalState(GameObjectLifeCycleState state) { this->_state = state; }

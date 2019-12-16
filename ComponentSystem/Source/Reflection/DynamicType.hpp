@@ -17,7 +17,7 @@ namespace Egliss::Reflection
 		}
 		bool HasTypeRelation(int typeId) const
 		{
-			// ~‡ƒ\[ƒg‚³‚ê‚Ä‚¢‚é‚½‚ß“ñ•ª’Tõo—ˆ‚é
+			// é™é †ã‚½ãƒ¼ãƒˆã•ã‚Œã¦ã„ã‚‹ãŸã‚äºŒåˆ†æŽ¢ç´¢å‡ºæ¥ã‚‹
 			return std::binary_search(this->parentTypeIds.rbegin(), this->parentTypeIds.rend(), typeId);
 		}
 

@@ -9,7 +9,7 @@ namespace Egliss::SceneManagement
 	template<class T>
 	class QuadTree;
 
-	// TODO ComponentSystem‚É’u‚«‚½‚¢
+	// TODO ComponentSystemã«ç½®ããŸã„
 	class GameObjectManager
 	{
 	using ContainerT = std::vector<ComponentSystem::GameObject*>;

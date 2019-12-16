@@ -4,7 +4,7 @@
 
 void Egliss::Reflection::UniqueTypeId::Initialize()
 {
-	// DynamicTypeManager.cpp ‚Å‰Šú‰»‚µ‚½Id‡‚É‰Šú‰»‚µ‚Ä‚à‚ç‚¤
+	// DynamicTypeManager.cpp ã§åˆæœŸåŒ–ã—ãŸIdé †ã«åˆæœŸåŒ–ã—ã¦ã‚‚ã‚‰ã†
 	// Id = 0
 	UniqueTypeId::Get<Egliss::ComponentSystem::Component>();
 	// Id = 1

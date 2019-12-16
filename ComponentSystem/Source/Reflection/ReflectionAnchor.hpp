@@ -3,6 +3,6 @@
 
 namespace Egliss::Reflection
 {
-	// TODO EBO‚É‰e‹¿‚ ‚è
+	// TODO EBOã«å½±éŸ¿ã‚ã‚Š
 	class __declspec(novtable) IRfelectionTarget {};
 }

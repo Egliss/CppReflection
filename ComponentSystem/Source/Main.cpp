@@ -38,7 +38,7 @@ void Func()
 	std::cout << text << std::endl;
 }
 
-// TODO main‚ÍƒeƒXƒg‚Æ–¼‘O‚ªÕ“Ë‚·‚é
+// TODO mainã¯ãƒ†ã‚¹ãƒˆã¨åå‰ãŒè¡çªã™ã‚‹
 int main()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);

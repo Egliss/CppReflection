@@ -7,7 +7,7 @@
 
 using namespace Egliss::ComponentSystem;
 
-// TODO �폜��肪�Â�
+// TODO 削除回りが甘い
 GameObject::GameObject() : _id(-1), _enable(true), _name(""), _state(GameObjectLifeCycleState::Birthed)
 {
 }

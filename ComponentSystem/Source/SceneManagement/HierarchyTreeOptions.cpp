@@ -35,13 +35,13 @@ std::string DebuggerT::CreateHiralchyTreeText(const HiralchyTreeOptions& options
 	InternalhierarchyTreeOption option = options;
 	std::stringstream stream;
 	ComponentSystemDebugger::CreatehierarchyTreeTextWithGameObject(options.root, stream, option);
-	// RVO‚ªŒø‚­‚Ì‚Åmove‚µ‚È‚¢
+	// RVOãŒåŠ¹ãã®ã§moveã—ãªã„
 	return stream.str();
 }
 
 void DebuggerT::CreatehierarchyTreeTextWithGameObject(const GameObject* target, std::stringstream& text, InternalhierarchyTreeOption& options)
 {
-	// ƒRƒs[
+	// ã‚³ãƒ”ãƒ¼
 	auto option = options;
 	const int blankCount = static_cast<int>(options.nowhierarchy * options.indent);
 	text

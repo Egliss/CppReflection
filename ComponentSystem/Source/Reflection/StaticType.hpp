@@ -5,9 +5,9 @@ namespace Egliss::Reflection
 	template<class T>
 	class StaticTypeDescription
 	{
-		// Œ^ŒÅ—L‚ÌId
+		// å‹å›ºæœ‰ã®Id
 		// static constexpr int Id = 0;
-		// ƒNƒ‰ƒX‚Ì–¼Ì
+		// ã‚¯ãƒ©ã‚¹ã®åç§°
 		// static constexpr std::string_view Name = "NameSpace::ClassName";
 	};
 }
