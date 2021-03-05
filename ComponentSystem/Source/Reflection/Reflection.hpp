@@ -6,6 +6,7 @@
 #include <unordered_map>
 #include <array>
 #include <functional>
+#include <algorithm>
 
 #include "./ReflectionAnchor.hpp"
 #include "./StaticType.hpp"
